@@ -12,26 +12,10 @@
     "newcap": true,
     "noarg": true,
     "quotmark": "single",
-    "regexp": true,
     "undef": true,
     "unused": true,
     "strict": true,
     "trailing": true,
     "smarttabs": true,
-    "jquery": true,
-    "globals": {
-        "Doevent": true,
-        "doevent": true,
-        "_": false,
-        "Backbone": false,
-        "JST": false,
-        "beforeEach": false,
-        "describe": false,
-        "it": false,
-        "assert": true,
-        "expect": true,
-        "should": true,
-        "require": false,
-        "define": false
-    }
+    "jquery": true
 }
