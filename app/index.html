@@ -1,30 +1,41 @@
 <!doctype html>
-<html class="no-js">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <title>Do Event</title>
-        <meta name="description" content="Create calendar events blazing fast">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Doevent</title>
+        <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <link rel="shortcut icon" href="/favicon.ico">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <!-- build:css styles/vendor.css -->
-        <!-- bower:css -->
-        <!-- endbower -->
-        <!-- endbuild -->
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
-        <script src="../bower_components/modernizr/modernizr.js"></script>
+        <script src="bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
-
     </head>
     <body>
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <a id="sign-in-with-google" class="zocial googleplus">Sign in with Google+</a>
+
+        <div class="hero-unit">
+          <h1>'Allo, 'Allo!</h1>
+          <p>You now have</p>
+          <ul>
+            <li>HTML5 Boilerplate</li>
+            <li>jQuery</li>
+            <li>Backbone.js</li>
+            <li>Underscore.js</li>
+            <li>Modernizr</li>
+            <li>RequireJS</li>
+          </ul>
+        </div>
+
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -36,48 +47,8 @@
             ga('create','UA-XXXXX-X');ga('send','pageview');
         </script>
 
-    <script src="../bower_components/jquery/dist/jquery.js" ></script>
-    <script src="../bower_components/lodash/dist/lodash.js" ></script>
-    <script src="../bower_components/hello/dist/hello.all.js" ></script>
-
-    <script>
-    'use strict';
-
-
-    function userLoggedIn(auth) {
-        console.log('logged in')
-        // call user information, for the given network
-        hello(auth.network).api( '/me' ).success(function(r){
-            var $target = $("body");
-            if($target.length==0){
-                $target = $("<div id='profile_"+auth.network+"'></div>").appendTo("#profile");
-            }
-            $target.html('<img src="'+ r.thumbnail +'" /> Hey '+r.name).attr('title', r.name + " on "+ auth.network);
-        });
-    }
-
-    function initHello() {
-        hello.init(
-            {google: '535245779168.apps.googleusercontent.com'},
-            {redirect_uri: 'redirect.html'}
-        );
-
-        hello.on('auth.login', userLoggedIn);
-
-        $('#sign-in-with-google').click(function() {
-            hello('google').login();
-        });
-    }
-
-    function main() {
-        initHello();
-    }
-
-    main();
-
-    </script>
-    <!--
-    <script data-main="scripts/main" src="../bower_components/requirejs/require.js"></script>
-    -->
+        <!-- build:js scripts/main.js -->
+        <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
+        <!-- endbuild -->
 </body>
 </html>

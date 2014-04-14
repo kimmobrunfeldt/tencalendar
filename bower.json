@@ -1,11 +1,13 @@
 {
   "name": "doevent",
-  "private": true,
+  "version": "0.0.0",
   "dependencies": {
-    "modernizr": "~2.6.2",
-    "jquery": "~1.11.0",
-    "requirejs": "~2.1.11",
-    "lodash": "~2.4.1"
+    "jquery": "~2.1.0",
+    "underscore": "~1.6.0",
+    "backbone": "~1.1.0",
+    "requirejs": "~2.1.10",
+    "requirejs-text": "~2.0.10",
+    "modernizr": "~2.7.1"
   },
   "devDependencies": {}
 }

@@ -1,17 +1,28 @@
+/*global require*/
+'use strict';
+
 require.config({
-    paths: {
-        jquery: '../bower_components/jquery/dist/jquery',
-        requirejs: '../bower_components/requirejs/require',
-        lodash: '../bower_components/lodash/dist/lodash',
-        hello: '../bower_components/hello/dist/hello.all'
-    },
     shim: {
+        underscore: {
+            exports: '_'
+        },
+        backbone: {
+            deps: [
+                'underscore',
+                'jquery'
+            ],
+            exports: 'Backbone'
+        }
+    },
+    paths: {
+        jquery: '../bower_components/jquery/jquery',
+        backbone: '../bower_components/backbone/backbone',
+        underscore: '../bower_components/underscore/underscore'
     }
 });
 
-define('modernizr', [], window.Modernizr);
-
-// Define AMD modules here so they are globally available
-require(['app', 'jquery', 'modernizr'], function (app, $, Modernizr) {
-    app();
+require([
+    'backbone'
+], function (Backbone) {
+    Backbone.history.start();
 });
