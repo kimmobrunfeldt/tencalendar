@@ -1,32 +1,48 @@
+var clientId = '535245779168-o379drscdduhkf0uto8qjac7hq83r7os.apps.googleusercontent.com';
+var apiKey = 'YOUR_API_KEY';
+var scopes = 'https://www.googleapis.com/auth/calendar';
 
-function main() {
-    initHello();
+function handleClientLoad() {
+  //gapi.client.setApiKey(apiKey);
+  window.setTimeout(checkAuth,1);
+  checkAuth();
 }
 
-function initHello() {
-    hello.on('auth.login', userLoggedIn);
+function checkAuth() {
+  gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true},
+      handleAuthResult);
+}
 
-    $('#sign-in-with-google').click(function() {
-        hello('google').login();
+function handleAuthResult(authResult) {
+  var authorizeButton = document.getElementById('authorize-button');
+  if (authResult) {
+    authorizeButton.style.visibility = 'hidden';
+    makeApiCall();
+  } else {
+    authorizeButton.style.visibility = '';
+    authorizeButton.onclick = handleAuthClick;
+   }
+}
+
+function handleAuthClick(event) {
+  gapi.auth.authorize(
+      {client_id: clientId, scope: scopes, immediate: false},
+      handleAuthResult);
+  return false;
+}
+
+function makeApiCall() {
+  gapi.client.load('calendar', 'v3', function() {
+    var request = gapi.client.calendar.events.list({
+      'calendarId': 'primary'
     });
 
-    hello.init(
-        {google: '535245779168-o379drscdduhkf0uto8qjac7hq83r7os.apps.googleusercontent.com'},
-        {redirect_uri: 'redirect.html'}
-    );
-
-}
-
-function userLoggedIn(auth) {
-    console.log('logged in')
-    // call user information, for the given network
-    hello(auth.network).api( '/me' ).success(function(r){
-        var $target = $("body");
-        if($target.length==0){
-            $target = $("<div id='profile_"+auth.network+"'></div>").appendTo("#profile");
-        }
-        $target.html('<img src="'+ r.thumbnail +'" /> Hey '+r.name).attr('title', r.name + " on "+ auth.network);
+    request.execute(function(resp) {
+      for (var i = 0; i < resp.items.length; i++) {
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode(resp.items[i].summary));
+        document.getElementById('events').appendChild(li);
+      }
     });
+  });
 }
-
-main();

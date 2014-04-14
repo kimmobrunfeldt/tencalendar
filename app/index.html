@@ -22,7 +22,14 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <a id="sign-in-with-google" class="zocial googleplus">Sign in with Google+</a>
+
+
+    <div id='content'>
+      <h1>Events</h1>
+      <ul id='events'></ul>
+    </div>
+    <a id="sign-in-with-google" onclick='handleAuthClick();' class="zocial googleplus">Sign in with Google+</a>
+
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -41,5 +48,7 @@
         <!-- build:js scripts/main.js -->
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
+
+        <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 </body>
 </html>
