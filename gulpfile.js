@@ -79,7 +79,7 @@ gulp.task('clean', function () {
 });
 
 // Build
-gulp.task('build', ['html', 'images', 'fonts']);
+gulp.task('build', ['html', 'images', 'fonts', 'scripts']);
 
 // Default task
 gulp.task('default', ['clean'], function () {
