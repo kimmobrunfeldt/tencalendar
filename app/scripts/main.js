@@ -1,10 +1,8 @@
 var clientId = '535245779168-o379drscdduhkf0uto8qjac7hq83r7os.apps.googleusercontent.com';
-var apiKey = 'YOUR_API_KEY';
 var scopes = 'https://www.googleapis.com/auth/calendar';
 
 function handleClientLoad() {
-  //gapi.client.setApiKey(apiKey);
-  window.setTimeout(checkAuth,1);
+  window.setTimeout(checkAuth, 1);
   checkAuth();
 }
 
@@ -32,6 +30,7 @@ function handleAuthClick(event) {
 }
 
 function makeApiCall() {
+    return;
   gapi.client.load('calendar', 'v3', function() {
     var request = gapi.client.calendar.events.list({
       'calendarId': 'primary'
@@ -45,4 +44,27 @@ function makeApiCall() {
       }
     });
   });
+}
+
+function addNew() {
+    var resource = {
+      "summary": "Appointment",
+      "location": "Somewhere",
+      "start": {
+        "dateTime": "2014-04-16T10:00:00.000-07:00"
+      },
+      "end": {
+        "dateTime": "2014-04-16T10:25:00.000-07:00"
+      }
+    };
+
+    gapi.client.load('calendar', 'v3', function() {
+        var request = gapi.client.calendar.events.insert({
+          'calendarId': 'primary',
+          'resource': resource
+        });
+        request.execute(function(resp) {
+          console.log(resp);
+        });
+    });
 }
