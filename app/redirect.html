@@ -14,7 +14,11 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
     <title>Hello, redirecting...</title>
 </head>
 <body>
-    <script src="./src/hello.js"></script>
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/hello/dist/hello.all.min.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
 
     <script>
         // DEBUG

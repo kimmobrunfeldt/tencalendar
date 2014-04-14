@@ -4,16 +4,17 @@ function main() {
 }
 
 function initHello() {
-    hello.init(
-        {google: '535245779168.apps.googleusercontent.com'},
-        {redirect_uri: 'redirect.html'}
-    );
-
     hello.on('auth.login', userLoggedIn);
 
     $('#sign-in-with-google').click(function() {
         hello('google').login();
     });
+
+    hello.init(
+        {google: '535245779168.apps.googleusercontent.com'},
+        {redirect_uri: 'redirect.html'}
+    );
+
 }
 
 function userLoggedIn(auth) {
