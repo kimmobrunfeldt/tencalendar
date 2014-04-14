@@ -11,7 +11,7 @@ function initHello() {
     });
 
     hello.init(
-        {google: '535245779168.apps.googleusercontent.com'},
+        {google: '535245779168-o379drscdduhkf0uto8qjac7hq83r7os.apps.googleusercontent.com'},
         {redirect_uri: 'redirect.html'}
     );
 
