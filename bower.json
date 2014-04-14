@@ -1,0 +1,11 @@
+{
+  "name": "doevent",
+  "private": true,
+  "dependencies": {
+    "modernizr": "~2.6.2",
+    "jquery": "~1.11.0",
+    "requirejs": "~2.1.11",
+    "lodash": "~2.4.1"
+  },
+  "devDependencies": {}
+}
