@@ -1,0 +1,30 @@
+@import "flex";
+
+$login-background: #f5f5f5;
+
+
+.login {
+    background: $login-background;
+    height: 100%;
+
+    font-weight: 100;
+
+    header {
+        font-size: 2em;
+    }
+
+    .login-upper {
+        @include flexbox;
+        background: $login-background;
+        height: 80%;
+
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login-lower {
+        background: $login-background;
+        height: 20%;
+    }
+
+}

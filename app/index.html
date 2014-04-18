@@ -2,7 +2,7 @@
 <html class="no-js">
     <head>
         <meta charset="utf-8">
-        <title>doevent</title>
+        <title>Do event</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -12,43 +12,52 @@
         <!-- endbower -->
         <!-- endbuild -->
 
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
+
         <!-- build:css styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
 
     </head>
     <body>
-        <!--[if lt IE 10]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
 
+    <!--[if lt IE 10]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 
-
-    <div id='content'>
-      <h1>Events</h1>
-      <ul id='events'></ul>
+    <div class="view" id="login">
+        <div class="login">
+            <div class="login-upper">
+                <header>The most simple calendar</header>
+                <a id="sign-in-with-google" onclick="handleAuthClick();" class="zocial googleplus">Sign in with Google+</a>
+            </div>
+            <div class="login-lower"></div>
+        </div>
     </div>
-    <a id="sign-in-with-google" onclick='handleAuthClick();' class="zocial googleplus">Sign in with Google+</a>
+
+    <div class="view hidden" id="calendar">
+
+        <input type="text" placeholder="e.g ">
+    </div>
 
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
 
-        <script src="scripts/lib/jquery.js"></script>
-        <script src="scripts/lib/hello.all.js"></script>
-        <script src="scripts/lib/lodash.compat.js"></script>
+    <script src="scripts/lib/jquery.js"></script>
+    <script src="scripts/lib/lodash.compat.js"></script>
 
-        <!-- build:js scripts/main.js -->
-        <script src="scripts/main.js"></script>
-        <!-- endbuild -->
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
 
-        <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 </body>
 </html>
