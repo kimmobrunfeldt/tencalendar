@@ -1,6 +1,6 @@
 {
-  "name": "doevent",
-  "version": "0.0.0",
+  "name": "tencalendar",
+  "version": "0.0.1",
   "dependencies": {},
   "devDependencies": {
     "gulp": "~3.5.0",

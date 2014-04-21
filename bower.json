@@ -1,5 +1,5 @@
 {
-  "name": "doevent",
+  "name": "tencalendar",
   "private": true,
   "dependencies": {
     "jquery": "~1.11.0",

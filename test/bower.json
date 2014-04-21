@@ -1,5 +1,5 @@
 {
-  "name": "doevent",
+  "name": "tencalendar",
   "private": true,
   "dependencies": {
     "chai": "~1.8.0",

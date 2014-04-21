@@ -1,7 +1,7 @@
 {
   "generator-backbone": {
     "appPath": "app",
-    "appName": "Doevent",
+    "appName": "Ten calendar",
     "coffee": false,
     "testFramework": "mocha",
     "templateFramework": "lodash",

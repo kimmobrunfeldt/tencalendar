@@ -1,70 +1,48 @@
-var clientId = '535245779168-o379drscdduhkf0uto8qjac7hq83r7os.apps.googleusercontent.com';
-var scopes = 'https://www.googleapis.com/auth/calendar';
+require.config({
+    paths: {
+        jquery: 'libs/jquery',
+        q: 'libs/q',
+        underscore: 'libs/underscore',
+        gapi: 'libs/google-api',
 
-function handleClientLoad() {
-  window.setTimeout(checkAuth, 1);
-  checkAuth();
-}
+        // RequireJS plugins
+        i18n: 'libs/require/i18n',
+        text: 'libs/require/text',
+        async: 'libs/require/async',
 
-function checkAuth() {
-  gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true},
-      handleAuthResult);
-}
+        // Backbone and Marionette
+        backbone: 'libs/backbone',
+        marionette: 'libs/backbone.marionette.amd',
+        'backbone.wreqr' : 'libs/backbone.wreqr',
+        'backbone.babysitter' : 'libs/backbone.babysitter',
 
-function handleAuthResult(authResult) {
-  var authorizeButton = document.getElementById('authorize-button');
-  if (authResult) {
-    authorizeButton.style.visibility = 'hidden';
-    makeApiCall();
-  } else {
-    authorizeButton.style.visibility = '';
-    authorizeButton.onclick = handleAuthClick;
-   }
-}
+        // Other
+        templates: '../templates'
+    }
+});
 
-function handleAuthClick(event) {
-  gapi.auth.authorize(
-      {client_id: clientId, scope: scopes, immediate: false},
-      handleAuthResult);
-  return false;
-}
+require([
+    'underscore',
+    'backbone',
+    'application',
+    'router'
+], function (
+    _,
+    Backbone,
+    application,
+    Router
+) {
+    application.addInitializer(function(options) {
+        application.router = new Router();
 
-function makeApiCall() {
-    return;
-  gapi.client.load('calendar', 'v3', function() {
-    var request = gapi.client.calendar.events.list({
-      'calendarId': 'primary'
+        application.navigate = function (route, options) {
+            options = options || {};
+            application.router.navigate(route, _.extend({trigger: true}, options));
+        };
+
+        Backbone.history.start();
     });
 
-    request.execute(function(resp) {
-      for (var i = 0; i < resp.items.length; i++) {
-        var li = document.createElement('li');
-        li.appendChild(document.createTextNode(resp.items[i].summary));
-        document.getElementById('events').appendChild(li);
-      }
-    });
-  });
-}
-
-function addNew() {
-    var resource = {
-      "summary": "Appointment",
-      "location": "Somewhere",
-      "start": {
-        "dateTime": "2014-04-16T10:00:00.000-07:00"
-      },
-      "end": {
-        "dateTime": "2014-04-16T10:25:00.000-07:00"
-      }
-    };
-
-    gapi.client.load('calendar', 'v3', function() {
-        var request = gapi.client.calendar.events.insert({
-          'calendarId': 'primary',
-          'resource': resource
-        });
-        request.execute(function(resp) {
-          console.log(resp);
-        });
-    });
-}
+    console.log('Start application')
+    application.start();
+});
