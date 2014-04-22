@@ -17,7 +17,7 @@ define([
 ) {
     return Marionette.ItemView.extend({
 
-        template: _.template(landingTemplate),
+        template: _.template(calendarTemplate),
         templateHelpers: templateHelpers,
 
         events: {

@@ -23,11 +23,11 @@ define([
             immediate: true
         }, function handleAuthReponse(token) {
             if (_.has(token, 'error')) {
-                Q.reject({
+                def.reject({
                     error: token.error,
                 });
             } else {
-                Q.resolve({
+                def.resolve({
                     token: token.access_token,
                     expires: token.expires_in
                 });

@@ -7,7 +7,7 @@ body, html {
     min-height: 100%;
 }
 
-.view {
+#main, #main > div:first-child, .view, {
     width: 100%;
     height: 100%;
 
@@ -22,5 +22,6 @@ body, html {
 @import "utils";
 
 /* Views */
-@import "view-login";
-@import "view-calendar";
+@import "landing";
+@import "calendar";
+@import "loading";

@@ -6,7 +6,7 @@ body, html {
   min-height: 100%;
 }
 
-.view {
+#main, #main > div:first-child, .view {
   width: 100%;
   height: 100%;
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1105,15 +1105,15 @@ button:-moz-focus-inner {
 }
 
 /* Views */
-.login {
+.login-container {
   background: whitesmoke;
   height: 100%;
   font-weight: 100;
 }
-.login header {
+.login-container header {
   font-size: 2.5em;
 }
-.login .login-upper {
+.login-container .login-upper {
   display: -webkit-flex;
   display: -moz-flex;
   display: flex;
@@ -1124,12 +1124,28 @@ button:-moz-focus-inner {
   -webkit-justify-content: center;
   justify-content: center;
 }
-.login .login-lower {
+.login-container .login-lower {
   background: whitesmoke;
   height: 20%;
 }
 
 .view .login {
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.loading {
+  background: white;
+  height: 100%;
+}
+.loading .loader {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  background: white;
+  height: 100%;
   -webkit-align-items: center;
   align-items: center;
   -webkit-justify-content: center;
