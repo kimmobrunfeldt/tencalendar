@@ -1,18 +1,14 @@
-@import "flex";
-
 $loading-background: #fff;
 
+#loading {
+  background: $loading-background;
 
-.loading {
+  .loader {
+    @include flexbox;
     background: $loading-background;
     height: 100%;
 
-    .loader {
-        @include flexbox;
-        background: $loading-background;
-        height: 100%;
-
-        align-items: center;
-        justify-content: center;
-    }
+    align-items: center;
+    justify-content: center;
+  }
 }

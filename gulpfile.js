@@ -121,9 +121,9 @@ gulp.task('wiredep', function () {
 gulp.task('watch', ['connect', 'serve'], function () {
     // Watch for changes in `app` folder
     gulp.watch([
-        'app/*.html',
-        'app/styles/**/*.scss',
-        'app/scripts/**/*.js',
+        'app/**/*.html',
+        'app/**/*.scss',
+        'app/**/*.js',
         'app/images/**/*'
     ], function (event) {
         return gulp.src(event.path)

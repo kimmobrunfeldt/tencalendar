@@ -17,7 +17,6 @@ define([
     CalendarView,
     LoadingView
 ) {
-
     return Marionette.AppRouter.extend({
 
         routes: {
@@ -26,25 +25,18 @@ define([
         },
 
         logout: function() {
-            console.log('logout route')
-            auth.logout();
-            application.navigate('', { trigger: false, replace: true });
+            auth.unAuthorize();
+            application.navigate('', {replace: true});
         },
 
         default: function() {
-            console.log('default route')
             application.mainRegion.show(new LoadingView());
 
-            auth.isAuthenticated().then(
-                function success() {
-                    console.log(auth.isAuthenticated());
-                    console.log('User is authenticated')
-                    application.mainRegion.show(new CalendarView());
-                }, function fail() {
-                    console.log('User is not authenticated')
-                    application.mainRegion.show(new LandingView());
-                }
-            );
+            if (auth.isAuthorized()) {
+                application.mainRegion.show(new CalendarView());
+            } else {
+                application.mainRegion.show(new LandingView());
+            }
         }
     });
 });

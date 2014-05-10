@@ -35,7 +35,7 @@ require([
     application.addInitializer(function(options) {
         application.router = new Router();
 
-        application.navigate = function (route, options) {
+        application.navigate = function(route, options) {
             options = options || {};
             application.router.navigate(route, _.extend({trigger: true}, options));
         };
@@ -43,6 +43,5 @@ require([
         Backbone.history.start();
     });
 
-    console.log('Start application')
     application.start();
 });

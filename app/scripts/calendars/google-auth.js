@@ -14,8 +14,14 @@ define([
 
     // Public
 
-    var isAuthenticated = exports.isAuthenticated = function() {
+    var authorize = exports.authorize = function(token) {
         var def = Q.defer();
+
+        if (token) {
+            gapi.auth.setToken({access_token: token});
+            def.resolve();
+            return def.promise;
+        }
 
         gapi.auth.authorize({
             client_id: clientId,

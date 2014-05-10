@@ -3,28 +3,41 @@
 $login-background: #f5f5f5;
 
 
-.login-container {
+#landing {
+  background: $login-background;
+  height: 100%;
+
+  font-weight: 100;
+
+  .header {
+    height: 30%;
+    text-align: center;
+    padding-top: 40px;
+
+    header.logo {
+      font-size: 4em;
+      margin-bottom: 10px;
+    }
+
+    header.slogan {
+      font-size: 1.5em;
+      margin-bottom: 60px;
+      font-style: italic;
+    }
+  }
+
+  .center {
+    @include flexbox;
     background: $login-background;
-    height: 100%;
+    height: 40%;
 
-    font-weight: 100;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 
-    header {
-        font-size: 2.5em;
-    }
-
-    .login-upper {
-        @include flexbox;
-        background: $login-background;
-        height: 80%;
-
-        align-items: center;
-        justify-content: center;
-    }
-
-    .login-lower {
-        background: $login-background;
-        height: 20%;
-    }
-
+  .bottom {
+    background: $login-background;
+    height: 30%;
+  }
 }

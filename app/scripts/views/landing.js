@@ -26,7 +26,9 @@ define([
 
         _login: function(e) {
             e.preventDefault();
-            auth.login();
+            auth.authorize().done(function() {
+                application.navigate('calendar');
+            });
         },
     });
 });
