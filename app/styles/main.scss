@@ -7,6 +7,20 @@ body, html {
   min-height: 100%;
 }
 
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Roboto Thin'), local('Roboto-Thin'), url(../fonts/roboto-thin.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Regular'), local('Roboto-Regular'), url(../fonts/roboto-regular.woff) format('woff');
+}
+
 #main, #main > div:first-child, .view, {
   width: 100%;
   height: 100%;

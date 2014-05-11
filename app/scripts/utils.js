@@ -13,6 +13,14 @@ define([
         return value;
     };
 
+    exports.alert = function(text) {
+        return window.alert(text);
+    };
+
+    exports.confirm = function(text) {
+        return window.confirm(text);
+    };
+
     return exports;
 });
 

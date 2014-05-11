@@ -12,8 +12,6 @@ define([
     var clientId = '535245779168-o379drscdduhkf0uto8qjac7hq83r7os.apps.googleusercontent.com';
     var scopes = 'https://www.googleapis.com/auth/calendar';
 
-    // Public
-
     var authorize = exports.authorize = function(token) {
         var def = Q.defer();
 

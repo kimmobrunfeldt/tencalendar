@@ -13,8 +13,6 @@ define([
 ) {
     var exports = {};
 
-    // Public
-
     exports.isAuthorized = function() {
         return !_.isNull(storage.get('auth'));
     };
@@ -23,7 +21,7 @@ define([
         return storage.get('auth');
     };
 
-    exports.authorize = function() {
+    var authorize = exports.authorize = function() {
 
         var promise;
         var auth = getAuth();
@@ -45,6 +43,11 @@ define([
     exports.unAuthorize = function() {
         storage.remove('auth');
     };
+
+    if (getAuth()) {
+        // When token is available, set token automatically
+        authorize();
+    }
 
     return exports;
 });

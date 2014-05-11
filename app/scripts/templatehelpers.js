@@ -1,11 +1,8 @@
 define([
-    'underscore',
-    'i18n'
+    'underscore'
 ], function(
-    _,
-    i18n
+    _
 ) {
     return {
-        i18n: i18n
     };
 });

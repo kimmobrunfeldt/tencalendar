@@ -3,10 +3,11 @@ require.config({
         jquery: 'libs/jquery',
         q: 'libs/q',
         underscore: 'libs/underscore',
-        gapi: 'libs/google-api',
+        gapi: 'libs/google-api',  // JS google API library
+        moment: 'libs/moment',
+        anytime: 'libs/anytime',
 
         // RequireJS plugins
-        i18n: 'libs/require/i18n',
         text: 'libs/require/text',
         async: 'libs/require/async',
 
@@ -25,7 +26,7 @@ require([
     'underscore',
     'backbone',
     'application',
-    'router'
+    'router',
 ], function (
     _,
     Backbone,
