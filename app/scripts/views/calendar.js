@@ -39,6 +39,12 @@ define([
             _.bindAll(this, '_createEvent', '_onEventInputKeyPress');
         },
 
+        onRender: function() {
+            setTimeout(function() {
+                $('#event-input').focus();
+            }, 0);
+        },
+
         _onEventInputKeyPress: function(event) {
             if (!event) {
                 event = window.event;
@@ -111,6 +117,10 @@ define([
             });
 
             return event;
+        },
+
+        _notify: function(text, type) {
+
         }
 
     });
