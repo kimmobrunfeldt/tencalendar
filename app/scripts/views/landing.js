@@ -1,4 +1,5 @@
 define([
+    'backbone',
     'underscore',
     'marionette',
     'application',
@@ -7,6 +8,7 @@ define([
     'templateHelpers',
     'text!templates/landing.html'
 ], function (
+    Backbone,
     _,
     Marionette,
     application,
@@ -26,8 +28,14 @@ define([
 
         _login: function(e) {
             e.preventDefault();
-            auth.authorize().done(function() {
-                application.navigate('calendar');
+            auth.authorize().then(function success() {
+                if (Backbone.history.fragment === 'calendar') {
+                    Backbone.history.loadUrl(Backbone.history.fragment);
+                } else {
+                    application.navigate('calendar');
+                }
+            }, function fail() {
+                console.log('login failed');
             });
         },
     });
