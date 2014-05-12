@@ -11,13 +11,16 @@
 
   <div class="calendar-input">
     <label for="event-input">New event</label>
-    <div class="input-group">
-      <input id="event-input" placeholder="e.g Coffee, friday 1pm @Starbucks" type="text" class="form-control">
-      <span class="input-group-btn">
-        <a class="btn btn-custom-large btn-primary" id="create-event">Create</a>
-      </span>
 
+    <div class="row collapse">
+      <div class="small-10 columns">
+        <input id="event-input" placeholder="e.g Coffee, friday 1pm @Starbucks" type="text" class="">
+      </div>
+      <div class="small-2 columns">
+        <button id="create-event" class="button postfix radius">Create</button>
+      </div>
     </div>
+
     <p id="error" class="error-label"></p>
   </div>
 

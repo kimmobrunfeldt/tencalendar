@@ -24,9 +24,10 @@ define([
         gapi.auth.authorize({
             client_id: clientId,
             scope: scopes,
-            immediate: true
+            immediate: false
         }, function handleAuthReponse(token) {
             if (_.has(token, 'error')) {
+                console.log(token)
                 def.reject({
                     error: token.error,
                 });

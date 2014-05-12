@@ -27,7 +27,6 @@
 
   p.error-label {
     padding-left: 2px;
-    padding-top: 10px;
   }
 
   .calendar-input {
@@ -42,13 +41,19 @@
       margin-bottom: 10px;
     }
 
+    input, button {
+        height: 45px;
+    }
+
     input {
-        height: 49px;
+        border-bottom-left-radius: 3px;
+        border-top-left-radius: 3px;
+        padding: 10px;
     }
 
     button {
-      width: 20%;
+        /* Fix small gap between input and button */
+        margin-left: -1px;
     }
-
   }
 }

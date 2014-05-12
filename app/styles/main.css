@@ -1,6 +1,5 @@
-@import url(vendor/bootstrap.min.css);
-@import url(vendor/bootflat.css);
-@import url(vendor/reset.css);
+@import url(vendor/foundation.css);
+/* Global theme variables */
 body, html {
   width: 100%;
   height: 100%;
@@ -25,22 +24,12 @@ body, html {
   width: 100%;
   height: 100%;
   min-width: 450px;
+  background: whitesmoke;
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* Global theme variables */
 /* Fonts and vendor styles */
 /* Random general */
-/**
- * Extra large button extensions. Extends `.btn`.
- */
-.btn-custom-large {
-  padding: 13px 28px;
-  font-size: 16px;
-  line-height: normal;
-  border-radius: 8px;
-}
-
 .hidden {
   display: none;
   visibility: hidden;
@@ -54,11 +43,11 @@ body, html {
 }
 
 a {
-  color: #222222;
+  color: #444444;
   text-decoration: none;
 }
 a:visited {
-  color: #222222;
+  color: #444444;
 }
 a:hover {
   color: #aaaaaa;
@@ -83,40 +72,37 @@ div, p, input {
 
 /* Views */
 #landing {
-  background: whitesmoke;
   height: 100%;
   font-weight: 100;
+  /* Make button a bit smaller to fit landing */
+}
+#landing button {
+  padding: 10px;
 }
 #landing .header {
-  height: 30%;
-  text-align: center;
-  padding-top: 40px;
+  width: 100%;
+  height: 80px;
 }
-#landing .header header.logo {
+#landing .header .left, #landing .header .right {
+  padding: 10px;
+}
+#landing .header .right {
+  text-align: right;
+}
+#landing .center {
+  text-align: center;
+}
+#landing .center header.logo {
   font-size: 4em;
   margin-bottom: 10px;
 }
-#landing .header header.slogan {
-  font-size: 1.5em;
-  margin-bottom: 60px;
+#landing .center header.slogan {
+  font-size: 1.55em;
   font-style: italic;
 }
-#landing .center {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: flex;
-  background: whitesmoke;
-  height: 40%;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-}
-#landing .bottom {
-  background: whitesmoke;
-  height: 30%;
+#landing .center .calendar {
+  width: 400px;
+  opacity: 0.5;
 }
 
 #calendar {
@@ -152,7 +138,6 @@ div, p, input {
 }
 #calendar p.error-label {
   padding-left: 2px;
-  padding-top: 10px;
 }
 #calendar .calendar-input {
   -webkit-flex: 1;
@@ -166,11 +151,17 @@ div, p, input {
   display: block;
   margin-bottom: 10px;
 }
+#calendar .calendar-input input, #calendar .calendar-input button {
+  height: 45px;
+}
 #calendar .calendar-input input {
-  height: 49px;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  padding: 10px;
 }
 #calendar .calendar-input button {
-  width: 20%;
+  /* Fix small gap between input and button */
+  margin-left: -1px;
 }
 
 #loading {

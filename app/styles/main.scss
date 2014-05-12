@@ -1,6 +1,10 @@
 // bower:scss
 // endbower
 
+/* Global theme variables */
+@import "variables";
+
+
 body, html {
   width: 100%;
   height: 100%;
@@ -26,23 +30,21 @@ body, html {
   height: 100%;
   min-width: 450px;
 
+  background: $background-color;
+
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* Global theme variables */
-@import "variables";
 
 /* Fonts and vendor styles */
-@import "vendor/bootstrap.min.css";
-@import "vendor/bootflat.css";
-@import "vendor/reset.css";
+@import "vendor/foundation.css";
+@import "vendor/flex";
 
 /* Random general */
-@import "bootstrap-extend";
 @import "utils";
 @import "base";
 
 /* Views */
-@import "landing";
-@import "calendar";
-@import "loading";
+@import "views/landing";
+@import "views/calendar";
+@import "views/loading";

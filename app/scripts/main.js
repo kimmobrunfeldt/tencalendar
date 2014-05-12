@@ -6,6 +6,7 @@ require.config({
         gapi: 'libs/google-api',  // JS google API library
         moment: 'libs/moment',
         anytime: 'libs/anytime',
+        foundation: 'libs/foundation.min',
 
         // RequireJS plugins
         text: 'libs/require/text',
@@ -19,20 +20,30 @@ require.config({
 
         // Other
         templates: '../templates'
+    },
+    shim: {
+        foundation: ['jquery']
     }
 });
 
 require([
+    'jquery',
+    'foundation',
     'underscore',
     'backbone',
     'application',
     'router',
 ], function (
+    $,
+    foundation,
     _,
     Backbone,
     application,
     Router
 ) {
+    // Initialize foundation
+    $(document).foundation();
+
     application.addInitializer(function(options) {
         application.router = new Router();
 
