@@ -1,0 +1,10 @@
+{
+  "name": "tencalendar",
+  "private": true,
+  "dependencies": {
+    "jquery": "~1.11.0",
+    "hello": "~0.2.1",
+    "lodash": "~2.4.1"
+  },
+  "devDependencies": {}
+}
