@@ -13,6 +13,15 @@ define([
         return value;
     };
 
+    exports.isEventEnterPress = function(event) {
+        if (!event) {
+            event = window.event;
+        }
+
+        var keyCode = event.keyCode || event.which;
+        return keyCode == '13';
+    };
+
     exports.alert = function(text) {
         return window.alert(text);
     };

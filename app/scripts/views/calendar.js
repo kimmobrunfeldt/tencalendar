@@ -32,11 +32,17 @@ define([
 
         events: {
             'click #create-event': '_createEvent',
-            'keypress #event-input': '_onEventInputKeyPress'
+            'keypress #event-input': '_onEventInputKeyPress',
+            'input #event-input': '_onEditInput',
+            'propertychange #event-input': '_onEditInput'
         },
 
         initialize: function() {
-            _.bindAll(this, '_createEvent', '_onEventInputKeyPress');
+            _.bindAll(this,
+                '_createEvent',
+                '_onEventInputKeyPress',
+                '_onEditInput'
+            );
         },
 
         onRender: function() {
@@ -46,16 +52,17 @@ define([
         },
 
         _onEventInputKeyPress: function(event) {
-            if (!event) {
-                event = window.event;
-            }
-
-            // When enter is pressed, create event
-            var keyCode = event.keyCode || event.which;
-            if (keyCode == '13'){
-                event.preventDefault();
+            if (utils.isEventEnterPress(event)) {
                 this._createEvent();
                 return false;
+            }
+        },
+
+        _onEditInput: function(event) {
+            $(event.currentTarget).removeClass('error');
+
+            if ($('#error').html() !== '') {
+                this._hideErrorAfterDelay();
             }
         },
 
@@ -68,7 +75,8 @@ define([
                 event = this._parseEvent(text);
             } catch(error) {
                 if (_.isString(error)) {
-                    utils.alert(error);
+                    $eventInput.addClass('error');
+                    this._displayError(error);
                 } else {
                     throw error;
                 }
@@ -90,8 +98,8 @@ define([
                 throw 'No date specified!';
             }
 
-            var summary = textComponents[0];
-            var textAfterSummary = textComponents[1];
+            var summary = textComponents[0].trim();
+            var textAfterSummary = textComponents[1].trim();
             var location;
 
             if (textAfterSummary.indexOf('@') !== -1) {
@@ -100,6 +108,7 @@ define([
 
             var time;
             var timeText = location ? textAfterSummary.split('@')[0] : textAfterSummary;
+            timeText = timeText.trim();
 
             time = anytime.parse(timeText);
             if (!time) {
@@ -119,9 +128,32 @@ define([
             return event;
         },
 
-        _notify: function(text, type) {
+        _errorTimer: undefined,
+        _clearErrorTimer: function() {
+            if (this._errorTimer) {
+                clearTimeout(this._errorTimer);
+                console.log('clear timer!')
+            }
+        },
 
+        _displayError: function(text) {
+            // Events from input edit / enter press might occur in different
+            // order they actually were launched, so we must double check
+            // that the timer is not set if we show error
+            this._clearErrorTimer();
+            // TODO: not working
+            $('#error').stop().fadeIn(0).show().html(text);
+        },
+
+        _hideErrorAfterDelay: function() {
+            this._clearErrorTimer();
+            this._errorTimer = setTimeout(function() {
+                var $error = $('#error');
+                $error.fadeOut(function() {
+                    $error.html('');
+                    $error.show();
+                });
+            }, 0);
         }
-
     });
 });

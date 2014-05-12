@@ -1,16 +1,24 @@
 <div class="view" id="calendar">
 
   <div class="header">
-    <a id="logout" href="#logout">Logout</a>
+    <div class="left">
+
+    </div>
+    <div class="right">
+        <a id="logout" href="#logout">Logout</a>
+    </div>
   </div>
 
   <div class="calendar-input">
     <label for="event-input">New event</label>
+    <div class="input-group">
+      <input id="event-input" placeholder="e.g Coffee, friday 1pm @Starbucks" type="text" class="form-control">
+      <span class="input-group-btn">
+        <a class="btn btn-custom-large btn-primary" id="create-event">Create</a>
+      </span>
 
-    <div class="input-button-combo">
-      <input id="event-input" placeholder="e.g Coffee, friday 1pm @Starbucks" type="text">
-      <button id="create-event">Create</button>
     </div>
+    <p id="error" class="error-label"></p>
   </div>
 
 </div>
