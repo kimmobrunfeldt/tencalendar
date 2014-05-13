@@ -1,0 +1,27 @@
+a {
+  color: $link-color;
+  text-decoration: none;
+  &:visited {
+    color: $link-color;
+  }
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: none;
+  }
+}
+
+label, header {
+  color: $header-color;
+}
+
+div, p, input {
+  color: $text-color;
+}
+
+.error {
+  background: #FFF4F4;
+}
+
+.error-label {
+  color: #C99393;
+}
