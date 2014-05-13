@@ -5,7 +5,7 @@ define([
     'application',
     'vent',
     'auth',
-    'templateHelpers',
+    'templatehelpers',
     'text!templates/landing.html'
 ], function (
     Backbone,

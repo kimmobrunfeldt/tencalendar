@@ -1,7 +1,7 @@
 define([
     'underscore',
     'marionette',
-    'templateHelpers',
+    'templatehelpers',
     'text!templates/loading.html'
 ], function (
     _,

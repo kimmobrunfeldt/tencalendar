@@ -9,7 +9,7 @@ define([
     'calendar',
     'event',
     'utils',
-    'templateHelpers',
+    'templatehelpers',
     'text!templates/calendar.html'
 ], function (
     _,
