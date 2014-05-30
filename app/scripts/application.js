@@ -1,18 +1,11 @@
-define([
-    'underscore',
-    'marionette',
-    'backbone'
-],
-function (
-    _,
-    Marionette,
-    Backbone
-) {
-    var application = new Backbone.Marionette.Application();
+var Marionette = require('marionette');
+var _ = require('underscore');
 
-    application.addRegions({
-        mainRegion: '#main'
-    });
 
-    return application;
+var application = new Marionette.Application();
+
+application.addRegions({
+    mainRegion: '#main'
 });
+
+module.exports = application;

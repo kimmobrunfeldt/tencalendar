@@ -12,14 +12,12 @@
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
 
-        <script src="scripts/libs/modernizr.js"></script>
+        <!-- build:js scripts/vendor/modernizr.js -->
+        <script src="bower_components/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
     </head>
 
     <body>
-        <!--[if lt IE 10]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
         <div id="main"></div>
 
         <!-- Google Analytics -->
@@ -32,6 +30,14 @@
             ga('create','UA-XXXXX-X');ga('send','pageview');
         </script>
 
-        <script data-main="scripts/main" src="scripts/libs/require/require.js"></script>
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:js scripts/main.js -->
+        <script src="scripts/main.js"></script>
+        <!-- endbuild -->
 </body>
 </html>

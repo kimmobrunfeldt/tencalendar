@@ -1,4 +1,4 @@
-require.config({
+/*require.config({
     paths: {
         jquery: 'libs/jquery',
         q: 'libs/q',
@@ -41,19 +41,28 @@ require([
     application,
     Router
 ) {
-    // Initialize foundation
-    $(document).foundation();
+*/
 
-    application.addInitializer(function(options) {
-        application.router = new Router();
+var $ = require('jquery');
+var _ = require('underscore');
+var Backbone = require('backbone');
+var Marionette = require('marionette');
 
-        application.navigate = function(route, options) {
-            options = options || {};
-            application.router.navigate(route, _.extend({trigger: true}, options));
-        };
+var application = require('./application');
+var Router = require('./router');
 
-        Backbone.history.start();
-    });
+// Initialize foundation
+$(document).foundation();
 
-    application.start();
+application.addInitializer(function(options) {
+    application.router = new Router();
+
+    application.navigate = function(route, options) {
+        options = options || {};
+        application.router.navigate(route, _.extend({trigger: true}, options));
+    };
+
+    Backbone.history.start();
 });
+
+application.start();

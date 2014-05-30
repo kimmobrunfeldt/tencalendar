@@ -1,42 +1,32 @@
-define([
-    'underscore',
-    'q',
-    'marionette',
-    'application',
-    'auth',
-    'views/landing',
-    'views/calendar',
-    'views/loading'
-], function(
-    _,
-    Q,
-    Marionette,
-    application,
-    auth,
-    LandingView,
-    CalendarView,
-    LoadingView
-) {
-    return Marionette.AppRouter.extend({
+var _ = require('underscore');
+var Q = require('q');
+var Marionette = require('marionette');
 
-        routes: {
-            'logout'                         : 'logout',
-            '*default'                       : 'default'
-        },
+var application = require('./application');
+var auth = require('./auth');
+var LandingView = require('./views/landing');
+var CalendarView = require('./views/calendar');
+var LoadingView = require('./views/loading');
 
-        logout: function() {
-            auth.unAuthorize();
-            application.navigate('', {replace: true});
-        },
+module.exports = Marionette.AppRouter.extend({
 
-        default: function() {
-            application.mainRegion.show(new LoadingView());
+    routes: {
+        'logout'                         : 'logout',
+        '*default'                       : 'default'
+    },
 
-            if (auth.isAuthorized()) {
-                application.mainRegion.show(new CalendarView());
-            } else {
-                application.mainRegion.show(new LandingView());
-            }
+    logout: function() {
+        auth.unAuthorize();
+        application.navigate('', {replace: true});
+    },
+
+    default: function() {
+        application.mainRegion.show(new LoadingView());
+
+        if (auth.isAuthorized()) {
+            application.mainRegion.show(new CalendarView());
+        } else {
+            application.mainRegion.show(new LandingView());
         }
-    });
+    }
 });

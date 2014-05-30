@@ -1,53 +1,46 @@
-define([
-    'underscore',
-    'q',
-    'utils',
-    'calendars/google-auth',
-    'storage'
-], function(
-    _,
-    Q,
-    utils,
-    googleAuth,
-    storage
-) {
-    var exports = {};
+var _ = require('underscore');
+var Q = require('q');
 
-    exports.isAuthorized = function() {
-        return !_.isNull(storage.get('auth'));
-    };
+var utils = require('./utils');
+var googleAuth = require('./calendars/google-auth');
+var storage = require('./storage');
 
-    var getAuth = exports.getAuth = function() {
-        return storage.get('auth');
-    };
+var exports = {};
 
-    var authorize = exports.authorize = function() {
+exports.isAuthorized = function() {
+    return !_.isNull(storage.get('auth'));
+};
 
-        var promise;
-        var auth = getAuth();
-        if (!auth) {
-            promise = googleAuth.authorize();
-        } else {
-            promise = googleAuth.authorize(auth.token);
-        }
+var getAuth = exports.getAuth = function() {
+    return storage.get('auth');
+};
 
-        promise.done(function saveAuthToStorage(authData) {
-            if (authData) {
-                storage.save('auth', authData);
-            }
-        });
+var authorize = exports.authorize = function() {
 
-        return promise;
-    };
-
-    exports.unAuthorize = function() {
-        storage.remove('auth');
-    };
-
-    if (getAuth()) {
-        // When token is available, set token automatically
-        authorize();
+    var promise;
+    var auth = getAuth();
+    if (!auth) {
+        promise = googleAuth.authorize();
+    } else {
+        promise = googleAuth.authorize(auth.token);
     }
 
-    return exports;
-});
+    promise.done(function saveAuthToStorage(authData) {
+        if (authData) {
+            storage.save('auth', authData);
+        }
+    });
+
+    return promise;
+};
+
+exports.unAuthorize = function() {
+    storage.remove('auth');
+};
+
+if (getAuth()) {
+    // When token is available, set token automatically
+    authorize();
+}
+
+module.exports = exports;
